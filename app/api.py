@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route(API_PREFIX + "/ping")
 def ping():
-    breakpoint()
+    # breakpoint()
     try:
         result = {
             "service" : "debug-container",
