@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+
+  debug-con:
+    build:
+      context: ../
+      args:
+        env_file: dev.sh
+    image: debug-con
+    container_name: debug-con
+    environment:
+      ENV_TYPE: "dev"
+    ports:
+      - 80:80
+      - 5678:5678
