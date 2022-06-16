@@ -13,4 +13,3 @@ services:
       ENV_TYPE: "dev"
     ports:
       - 80:80
-      - 5678:5678

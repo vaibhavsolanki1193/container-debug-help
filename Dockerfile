@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-python3
+FROM frolvlad/alpine-python3 AS base
 
 RUN apk update && \
     # Install nginx web server (it helps to buffer slow client requests)
@@ -17,4 +17,12 @@ EXPOSE 80
 EXPOSE 8000
 EXPOSE 5678
 
+##### debug 
+FROM base as debug
+RUN pip install debugpy
+
+CMD python3 -m debugpy --listen 0.0.0.0:5678 --wait-for-client app/api.py
+
+### prod
+FROM base as prod
 ENTRYPOINT [ "/start.sh" ]
